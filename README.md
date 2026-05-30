@@ -15,5 +15,3 @@ This spreadsheet was independently developed, extending the original Group B (lo
 ### Disclaimer
 This tool is intended for educational and preliminary study purposes only. It does not replace a detailed executive project. Real installations require a project signed by a licensed engineer (with ART/CREA registration in Brazil, or equivalent professional certification elsewhere) and formal approval by the local electricity distributor.
 Results are estimates based on simplified models and should be validated with dedicated simulation software (e.g., PVsyst) and current local tariff and regulatory data.
-
-### How to Use
