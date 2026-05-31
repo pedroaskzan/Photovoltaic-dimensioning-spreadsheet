@@ -78,7 +78,8 @@ data.
   Vieira Jr. (EESC–USP).
 - ABNT NBR 16690 — *Instalações elétricas de arranjos fotovoltaicos*.
 - Law 14.300/2022 — Marco Legal da Geração Distribuída.
-- ANEEL — regulations on the Fio B charge and energy compensation.
+- ANEEL — regulations on charges and energy compensation.
 - Joi Energês. *[DEMANDA DE GERAÇÃO: O que fazer?](https://www.youtube.com/watch?v=shWBmDaj6Do)* (YouTube), TUSDg.
 - EC 132/2023 & LC 214/2025 — tax reform (IBS/CBS), 2026–2033 transition.
+- [Instituto Solar — Como Calcular o Valor do Fio B para Energia Solar](https://institutosolar.com/como-calcular-o-valor-do-fio-b-para-energia-solar/) (2023)
 
