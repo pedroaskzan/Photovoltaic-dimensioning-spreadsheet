@@ -9,7 +9,7 @@ First i dimension the photovoltaic system, then calculate the price/cost, and wi
 Choose the customer group, fill in the inputs, and select your project sizing - entering the correct values in the green cells.
 
 ### Additions and Improvements
-- Everything added is authoral and new, it only was based off the model of the professor;
+- The sheet is authoral and new, it only was based off the model of the professor;
 - Cut ICMS (not used in 2026, will get reformed);
 - Cut Energy Disponibility Cost (not related to solar without BESS, low effects, more important with high autoconsumption);
 - Added sepparation between consumed energy and injected energy, generating a more close to reality economic analysis with new and more faithful cost calculations;
