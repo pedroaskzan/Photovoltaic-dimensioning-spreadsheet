@@ -3,7 +3,7 @@
 ## Procedure
 Learned from Curso Solar by Doctor Professor Elmer Pablo Tito Cari from EESC USP, and used my Excel skills and knowledge on Brazil's tariffs and charges way to expand the provided spreadsheet, bringing it from only Group B to Group A users using the right taxes for more detailed and accurate spreadsheet.
 
-First i dimension the photovoltaic system, then calculate the price/cost, and with it use economic factor to adjust the payback curve over the years. It could be expanded as the group B spreadsheet is to include photovoltaic energy generation over the years, as well as calculating the payback while doing a loan (WIP)
+First i dimension the photovoltaic system, then calculate the price/cost, and with it use economic factor to adjust the payback curve over the years. It could be expanded as the group B spreadsheet is to include photovoltaic energy generation over the years, as well as calculating the payback while doing a loan (WIP).
 
 ### How to Use
 Choose the customer group, fill in the inputs, and select your project sizing - entering the correct values in the green cells.
