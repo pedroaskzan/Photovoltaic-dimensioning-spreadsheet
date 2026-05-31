@@ -9,7 +9,7 @@ First i dimension the photovoltaic system, then calculate the price/cost, and wi
 Choose the customer group, fill in the inputs, and select your project sizing - entering the correct values in the green cells.
 
 ### Additions and Improvements
-
+- Everything added is authoral and new, it only was based off the model of the professor;
 - Cut ICMS (not used in 2026, will get reformed);
 - Cut Energy Disponibility Cost (not related to solar without BESS, low effects, more important with high autoconsumption);
 - Added sepparation between consumed energy and injected energy, generating a more close to reality economic analysis with new and more faithful cost calculations;
@@ -20,7 +20,7 @@ Choose the customer group, fill in the inputs, and select your project sizing - 
 - Added sceneries for energy taxation future after ANEEL's resolution, 3 sceneries and one customizable;
 - Optimized spreadsheets by restructuring poorly formatted and written cells and texts;
 - Added autoconsumption factor and estimation for better sizing on energy cost compensation;
-- Changed a lot of formating and visuals, including auxiliary cells for easier changing and generating new graphs;
+- improved a lot in formating and visuals from the old base, also including auxiliary cells for easier changing and generating new graphs;
 - Included a lot of explanations;
 - Prof. ver: 7.3; mine version 3.
 
