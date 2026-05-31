@@ -8,9 +8,23 @@ First i dimension the photovoltaic system, then calculate the price/cost, and wi
 ### How to Use
 Choose the customer group, fill in the inputs, and select your project sizing - entering the correct values in the green cells.
 
+### Aditions and Improvements
+  -cut ICMS (not used in 2026, will get reformed);
+  -cut Energy Disponibility Cost (not related to solar without BESS, low effects, more important with high autoconsumption);
+  -Added sepparation between consumed energy and injected energy, generating a more close to reality economic analysis with new and more faithful cost calculations;
+  -Changed from Group B only to Group A or B;
+  -Added Group A energy costs and also contracted generation demand, calculation for optimal generation demand and all calculations to Group A dynamics;
+  -Added FioB tax that is the current taxation on injected energy;
+  -Made clearer explanations on each cell;
+  -Added sceneries for energy taxation future after ANEEL's resolution, 3 sceneries and one customizable;
+  -Optimized spreadsheets by restructuring poorly formatted and written cells and texts;
+  -Added autoconsumption factor and estimation for better sizing on energy cost compensation;
+  -Changed a lot of formating and visuals, including auxiliary cells for easier changing and generating new graphs;
+  -Included a lot of explanations.
+
 ### Credits & References
 The dimensioning methodology is based on the educational material from the Photovoltaic Systems Course at EESC-USP (School of Engineering of São Carlos, University of São Paulo), coordinated by Prof. Elmer P. T. Cari. The sizing equations follow established industry practices and Brazilian technical standards (ABNT NBR 16690, Law 14.300/2022).
-This spreadsheet was independently developed, extending the original Group B (low-voltage) approach to Group A consumers (medium-voltage, Green and Blue tariff modalities), with time-of-use tariff logic (peak / off-peak) and energy compensation analysis under Law 14.300/2022.
+This spreadsheet was independently developed, extending the original to a better sized one, with addition of group A analysis and more precise modeling, all under Law 14.300/2022.
 
 ### Disclaimer
 This tool is intended for educational and preliminary study purposes only. It does not replace a detailed executive project. Real installations require a project signed by a licensed engineer (with ART/CREA registration in Brazil, or equivalent professional certification elsewhere) and formal approval by the local electricity distributor.
