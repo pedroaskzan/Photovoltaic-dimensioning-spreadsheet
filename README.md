@@ -45,7 +45,7 @@ entering the correct values in the green cells.
   compensation.
 - Greatly improved formatting and visuals over the original base, including auxiliary
   cells for easier editing and for generating new graphs.
-- Prof. version: 7.3; my version: 3.
+- Prof. version: 7.3; my version: 3rd.
 
 ### Credits & References
 
