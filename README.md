@@ -1,9 +1,9 @@
 # Photovoltaic-dimensioning-spreadsheet
 [2026] (PV; Excel; PVSyst; Tariffs; Payback; Brazil) Concluding Curso Solar by Prof. Dr. Elmer Cari, from USP, we learned a lot on photovoltaic systems. With this project i use a photovoltaic system payback spreadsheet as a model, and make my own based with what i've learned in the course and my Excel skills. I expand to brazillian group A also, not only group B.
 ## Procedure
-Learned from Curso Solar by Doctor Professor Elmer Pablo Tito Cari from EESC USP, and used my Excel skills and knowledge on Brazil's tariffs and charges way to expand the provided spreadsheet, bringing it from only Group B to Group A users using green and blue tariffs.
+Learned from Curso Solar by Doctor Professor Elmer Pablo Tito Cari from EESC USP, and used my Excel skills and knowledge on Brazil's tariffs and charges way to expand the provided spreadsheet, bringing it from only Group B to Group A users using the right taxes for more detailed and accurate spreadsheet.
 
-First i dimension the photovoltaic system, then calculate the price/cost, and with it use economic factor to adjust the payback curve over the years. It could be expanded as the group B spreadsheet is to include photovoltaic energy generation over the years, as well as calculating the payback while doing a loan.
+First i dimension the photovoltaic system, then calculate the price/cost, and with it use economic factor to adjust the payback curve over the years. It could be expanded as the group B spreadsheet is to include photovoltaic energy generation over the years, as well as calculating the payback while doing a loan (WIP)
 
 ### How to Use
 Choose the customer group, fill in the inputs, and select your project sizing - entering the correct values in the green cells.
