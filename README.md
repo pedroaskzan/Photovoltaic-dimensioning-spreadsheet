@@ -20,7 +20,8 @@ Choose the customer group, fill in the inputs, and select your project sizing - 
   -Optimized spreadsheets by restructuring poorly formatted and written cells and texts;
   -Added autoconsumption factor and estimation for better sizing on energy cost compensation;
   -Changed a lot of formating and visuals, including auxiliary cells for easier changing and generating new graphs;
-  -Included a lot of explanations.
+  -Included a lot of explanations;
+  -Prof. ver: 7.3; mine version 3.
 
 ### Credits & References
 The dimensioning methodology is based on the educational material from the Photovoltaic Systems Course at EESC-USP (School of Engineering of São Carlos, University of São Paulo), coordinated by Prof. Elmer P. T. Cari. The sizing equations follow established industry practices and Brazilian technical standards (ABNT NBR 16690, Law 14.300/2022).
