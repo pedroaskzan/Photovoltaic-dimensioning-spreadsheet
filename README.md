@@ -47,7 +47,7 @@ entering the correct values in the green cells.
   cells for easier editing and for generating new graphs.
 - Prof. version: 7.3; my version: 3rd.
 
-### Credits & References
+### Credits
 
 The dimensioning methodology is based on the educational material from the
 Photovoltaic Systems Course at EESC–USP (School of Engineering of São Carlos,
@@ -69,3 +69,16 @@ certification elsewhere) and formal approval by the local distribution utility.
 Results are estimates based on simplified models and should be validated with
 dedicated simulation software (e.g., PVsyst) and current local tariff and regulatory
 data.
+
+### References
+
+- **Curso Solar** (EESC–USP) — Prof. Dr. Elmer P. T. Cari, Photovoltaic Systems
+  dimensioning course; original spreadsheet model and methodology.
+- **Tariff classes — lectures and exercises** — Prof. Dr. José Carlos de Melo.
+  Vieira Jr. (EESC–USP).
+- ABNT NBR 16690 — *Instalações elétricas de arranjos fotovoltaicos*.
+- Law 14.300/2022 — Marco Legal da Geração Distribuída.
+- ANEEL — regulations on the Fio B charge and energy compensation.
+- Joi Energês. *[DEMANDA DE GERAÇÃO: O que fazer?](https://www.youtube.com/watch?v=shWBmDaj6Do)* (YouTube), TUSDg.
+- EC 132/2023 & LC 214/2025 — tax reform (IBS/CBS), 2026–2033 transition.
+
