@@ -10,8 +10,8 @@ Choose the customer group, fill in the inputs, and select your project sizing - 
 
 ### Additions and Improvements
 
-- cut ICMS (not used in 2026, will get reformed);
-- cut Energy Disponibility Cost (not related to solar without BESS, low effects, more important with high autoconsumption);
+- Cut ICMS (not used in 2026, will get reformed);
+- Cut Energy Disponibility Cost (not related to solar without BESS, low effects, more important with high autoconsumption);
 - Added sepparation between consumed energy and injected energy, generating a more close to reality economic analysis with new and more faithful cost calculations;
 - Changed from Group B only to Group A or B;
 - Added Group A energy costs and also contracted generation demand, calculation for optimal generation demand and all calculations to Group A dynamics;
