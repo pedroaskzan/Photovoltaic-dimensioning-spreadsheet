@@ -1,33 +1,71 @@
-# Photovoltaic-dimensioning-spreadsheet
-[2026] (PV; Excel; PVSyst; Tariffs; Payback; Brazil) Concluding Curso Solar by Prof. Dr. Elmer Cari, from USP, we learned a lot on photovoltaic systems. With this project i use a photovoltaic system payback spreadsheet as a model, and make my own based with what i've learned in the course and my Excel skills. I expand to brazillian group A also, not only group B.
-## Procedure
-Learned from Curso Solar by Doctor Professor Elmer Pablo Tito Cari from EESC USP, and used my Excel skills and knowledge on Brazil's tariffs and charges way to expand the provided spreadsheet, bringing it from only Group B to Group A users using the right taxes for a more detailed and accurate spreadsheet.
+# Photovoltaic Dimensioning Spreadsheet
 
-First i dimension the photovoltaic system, then calculate the price/cost, and with it use economic factor to adjust the payback curve over the years. It could be expanded as the group B spreadsheet is to include photovoltaic energy generation over the years, as well as calculating the payback while doing a loan (WIP).
+**[2026]** · *PV · Excel · PVsyst · Tariffs · Payback · Brazil*
+
+After completing the *Curso Solar* taught by Prof. Dr. Elmer Cari (USP), I built my
+own photovoltaic payback spreadsheet, using a model from the course as a starting
+point and developing it further with what I learned and my Excel skills. I extended
+it to cover Brazilian **Group A** customers as well, not only Group B.
+
+## Procedure
+
+Based on the *Curso Solar* by Prof. Dr. Elmer Pablo Tito Cari (EESC–USP), I used my
+Excel skills and my knowledge of Brazil's tariffs and charges to expand the original
+spreadsheet, taking it from Group B only to Group A as well, applying the correct
+taxes for a more detailed and accurate analysis.
+
+First I dimension the photovoltaic system, then calculate its cost, and use economic
+factors to adjust the payback curve over the years. It could be expanded — as the
+Group B version already is — to include year-by-year PV generation, and to calculate
+payback under a financing/loan scenario (WIP).
 
 ### How to Use
-Choose the customer group, fill in the inputs, and select your project sizing - entering the correct values in the green cells.
+
+Choose the customer group, fill in the inputs, and select your project sizing by
+entering the correct values in the green cells.
 
 ### Additions and Improvements
-- The spreadsheet and its filling are authoral and new, they only were based off the model of the professor, his teachings and also my accumulated knowledge and studies;
-- Cut ICMS (not used in 2026, will get reformed);
-- Cut Energy Disponibility Cost (not related to solar without BESS, low effects, more important with high autoconsumption);
-- Added sepparation between consumed energy and injected energy, generating a more close to reality economic analysis with new and more faithful cost calculations;
-- Changed from Group B only to Group A or B;
-- Added Group A energy costs and also contracted generation demand, calculation for optimal generation demand and all calculations to Group A dynamics;
-- Added FioB tax that is the current taxation on injected energy;
-- Made clearer explanations on each cell;
-- Added sceneries for energy taxation future after ANEEL's resolution, 3 sceneries and one customizable;
-- Optimized spreadsheets by restructuring poorly formatted and written cells and texts;
-- Added autoconsumption factor and estimation for better sizing on energy cost compensation;
-- improved a lot in formating and visuals from the old base, also including auxiliary cells for easier changing and generating new graphs;
-- Included a lot of explanations;
-- Prof. ver: 7.3; mine 3rd version.
+
+- The spreadsheet and its content are original; they are only *based on* the
+  professor's model, his teaching, and my own studies.
+- Removed ICMS (not applied in 2026; under reform).
+- Removed the Energy Availability Cost (not relevant to solar without BESS; minor
+  effect, more significant with high self-consumption).
+- Added a separation between consumed and injected energy, producing a more realistic
+  economic analysis with more accurate cost calculations.
+- Changed from Group B only to Group A or B.
+- Added Group A energy costs and contracted generation demand, including the
+  calculation of the optimal generation demand and all Group A dynamics.
+- Added the **Fio B** charge, the current tax on injected energy.
+- Added clearer explanations for each cell.
+- Added scenarios for the future of energy taxation following ANEEL's resolution —
+  3 fixed scenarios and one customizable.
+- Restructured poorly formatted cells and text.
+- Added a self-consumption factor and estimate for better sizing of energy-cost
+  compensation.
+- Greatly improved formatting and visuals over the original base, including auxiliary
+  cells for easier editing and for generating new graphs.
+- Prof. version: 7.3; my version: 3.
 
 ### Credits & References
-The dimensioning methodology is based on the educational material from the Photovoltaic Systems Course at EESC-USP (School of Engineering of São Carlos, University of São Paulo), coordinated by Prof. Elmer P. T. Cari. The sizing equations follow established industry practices and Brazilian technical standards (ABNT NBR 16690, Law 14.300/2022).
-This spreadsheet was independently developed, extending the original to a better sized one, with addition of group A analysis and more precise modeling, all under Law 14.300/2022.
+
+The dimensioning methodology is based on the educational material from the
+Photovoltaic Systems Course at EESC–USP (School of Engineering of São Carlos,
+University of São Paulo), coordinated by Prof. Elmer P. T. Cari. The sizing equations
+follow established industry practices and Brazilian technical standards
+(ABNT NBR 16690, Law 14.300/2022).
+
+This spreadsheet was developed independently, extending the original into a more
+complete model with Group A analysis and more precise modeling, all under
+Law 14.300/2022.
 
 ### Disclaimer
-This tool is intended for educational and preliminary study purposes only. It does not replace a detailed executive project. Real installations require a project signed by a licensed engineer (with ART/CREA registration in Brazil, or equivalent professional certification elsewhere) and formal approval by the local electricity distributor.
-Results are estimates based on simplified models and should be validated with dedicated simulation software (e.g., PVsyst) and current local tariff and regulatory data.
+
+This tool is intended for educational and preliminary study purposes only. It does
+not replace a detailed executive project. Real installations require a project signed
+by a licensed engineer (with ART/CREA registration in Brazil, or equivalent
+certification elsewhere) and formal approval by the local distribution utility.
+
+Results are estimates based on simplified models and should be validated with
+dedicated simulation software (e.g., PVsyst) and current local tariff and regulatory
+data.
