@@ -95,8 +95,8 @@ Evaluated over $n = 0,1,\dots,30$ years. Injection base tariffs: Group A uses $T
 $$E_g(n) =
 \begin{cases}
 12 \cdot E_{FV} & n = 1 \\
-12 \cdot E_{FV} \cdot (1 - p_1) & n = 2 \\
-12 \cdot E_{FV} \cdot \bigl(1 - p_1 - (n-2) \cdot p_n\bigr) & n \ge 3
+12 \cdot E_{FV} \cdot (n-1) \cdot (1 - p_1) & n = 2 \\
+12 \cdot E_{FV} \cdot \bigl(1 - p_1) \cdot (n-1) - (n-2) \cdot p_n\bigr) & n \ge 3
 \end{cases}$$
 
 **Adjusted unit costs**
