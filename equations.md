@@ -90,13 +90,13 @@ $$\text{Cost}_{Wp} = \frac{I_0}{P_{FV}}$$
 
 Evaluated over $n = 0,1,\dots,30$ years. Injection base tariffs: Group A uses $TE_A^{scee},\ TUSD_A^{scee}$; Group B uses $TE_B,\ TUSD_B$.
 
-**Annual energy generated** (module degradation)
+**Annual energy generated** (module degradation (1st year -2%, next years -0,8% efficiency)
 
 $$E_g(n) =
 \begin{cases}
 12 \cdot E_{FV} & n = 1 \\
-12 \cdot E_{FV} \cdot (n-1) \cdot (1 - p_1) & n = 2 \\
-12 \cdot E_{FV} \cdot \bigl(1 - p_1) \cdot (n-1) - (n-2) \cdot p_n\bigr) & n \ge 3
+12 \cdot E_{FV} \cdot (1 - p_1) & n = 2 \\
+12 \cdot E_{FV} \cdot \bigl(1 - p_1) - (n-2) \cdot p_n\bigr) & n \ge 3
 \end{cases}$$
 
 **Adjusted unit costs**
