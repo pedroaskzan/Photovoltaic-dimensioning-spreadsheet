@@ -37,11 +37,11 @@ Grid-tied photovoltaic system for micro/mini-generators (Groups A and B) under *
 
 $$C_{cons}^{B} = TUSD_B + TE_B$$
 
-$$C_{inj}^{B} = TE_B + TUSD_B\,(1 - f_B)$$
+$$C_{inj}^{B} = TE_B + TUSD_B \cdot (1 - f_B)$$
 
 $$C_{cons}^{A} = TUSD_A + TE_A$$
 
-$$C_{inj}^{A} = TE_A^{scee} + TUSD_A^{scee}\,(1 - f_B)$$
+$$C_{inj}^{A} = TE_A^{scee} + TUSD_A^{scee} \cdot (1 - f_B)$$
 
 **Array sizing**
 
@@ -61,7 +61,7 @@ D_{ger} = \frac{P_{inv}^{CA}}{1000}$$
 
 **Voltage check and tilt**
 
-$$V_{mppt}^{max} = V_{oc}\,\bigl(1 + (T_{min} - 25)\,\alpha\bigr)\,N_{mod/mppt}$$
+$$V_{mppt}^{max} = V_{oc} \cdot \bigl(1 + (T_{min} - 25) \cdot \alpha\bigr) \cdot N_{mod/mppt}$$
 
 $$\beta =
 \begin{cases}
@@ -74,13 +74,11 @@ $$\beta =
 
 **Costs and investment**
 
-$$\text{cost}_{item} = q_{item}\cdot c_{item}
-\qquad
-\text{Distributed price} = \sum_i \text{cost}_{item,i}$$
+$$\text{Distributed price} = \sum_i \left( q_i \cdot c_i \right)$$
 
 $$\text{Material} = \text{IF}(\text{option}=1;\ \text{Distributed price};\ \text{Bundled price})$$
 
-$$\text{Transport} = 0{.}10\cdot\text{Material}$$
+$$\text{Transport} = 0.10 \cdot \text{Material}$$
 
 $$I_0 = \text{Material} + \text{Transport} + \text{Studies} + \text{Labor}$$
 
@@ -96,9 +94,9 @@ Evaluated over $n = 0,1,\dots,30$ years. Injection base tariffs: Group A uses $T
 
 $$E_g(n) =
 \begin{cases}
-12\,E_{FV} & n = 1 \\
-12\,E_{FV}\,(1 - p_1) & n = 2 \\
-12\,E_{FV}\,\bigl(1 - p_1 - (n-2)\,p_n\bigr) & n \ge 3
+12 \cdot E_{FV} & n = 1 \\
+12 \cdot E_{FV} \cdot (1 - p_1) & n = 2 \\
+12 \cdot E_{FV} \cdot \bigl(1 - p_1 - (n-2) \cdot p_n\bigr) & n \ge 3
 \end{cases}$$
 
 **Adjusted unit costs**
@@ -106,44 +104,44 @@ $$E_g(n) =
 $$C_{cons}(n) =
 \begin{cases}
 TE_{ef} + TUSD_{ef} & n = 1 \\
-C_{cons}(n-1)\,(1 + a) & n > 1
+C_{cons}(n-1) \cdot (1 + a) & n > 1
 \end{cases}$$
 
 $$C_{inj}(1) =
 \begin{cases}
 TE_{base} & c = 1 \\
-TE_{base} + TUSD_{base}\,(1 - f_B) & c = 2 \\
+TE_{base} + TUSD_{base} \cdot (1 - f_B) & c = 2 \\
 TE_{base} + TUSD_{base} & c = 3
 \end{cases}
 \qquad
-C_{inj}(n>1) = C_{inj}(n-1)\,(1+a)$$
+C_{inj}(n>1) = C_{inj}(n-1) \cdot (1 + a)$$
 
 **Savings, maintenance and cash flow**
 
-$$S(n) = \bigl(C_{cons}(n)\,t_{ac} + (1 - t_{ac})\,C_{inj}(n)\bigr)\,E_g(n)$$
+$$S(n) = \bigl(C_{cons}(n) \cdot t_{ac} + (1 - t_{ac}) \cdot C_{inj}(n)\bigr) \cdot E_g(n)$$
 
 $$M(n) =
 \begin{cases}
-S(n)\,(m + c_{inv}) & n = V_{inv}\ \text{or}\ n = 2\,V_{inv} \\
-S(n)\,m & \text{otherwise}
+S(n) \cdot (m + c_{inv}) & n = V_{inv}\ \text{or}\ n = 2 \cdot V_{inv} \\
+S(n) \cdot m & \text{otherwise}
 \end{cases}$$
 
 $$FC(n) =
 \begin{cases}
 -\,I_0 & n = 0 \\
-S(n) - M(n) - \text{IF}\bigl(\text{Group A};\ 12\,D_{ger}\,TUSD_g;\ 0\bigr) & n \ge 1
+S(n) - M(n) - \text{IF}\bigl(\text{Group A};\ 12 \cdot D_{ger} \cdot TUSD_g;\ 0\bigr) & n \ge 1
 \end{cases}$$
 
 **Cumulative values and metrics**
 
 $$FC_{ac}(n) = FC_{ac}(n-1) + FC(n)
 \qquad
-FD(n) = \frac{FC(n)}{(1 + i)^{\,n}}
+FD(n) = \frac{FC(n)}{(1 + i)^{n}}
 \qquad
 FD_{ac}(n) = FD_{ac}(n-1) + FD(n)$$
 
 $$\boxed{\ \text{NPV} = \sum_{n=0}^{30} FD(n)\ }
 \qquad
-\boxed{\ \text{IRR}:\ \sum_{n=0}^{30} \frac{FC(n)}{(1 + \text{IRR})^{\,n}} = 0\ }$$
+\boxed{\ \text{IRR}:\ \sum_{n=0}^{30} \frac{FC(n)}{(1 + \text{IRR})^{n}} = 0\ }$$
 
 The simple and discounted **paybacks** are the year in which $FC_{ac}(n)$ and $FD_{ac}(n)$ cross zero, respectively.
