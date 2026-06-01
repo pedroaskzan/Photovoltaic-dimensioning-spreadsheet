@@ -1,112 +1,149 @@
-# 📊 Photovoltaic Sizing and Payback Simulator
+# Photovoltaic Model Equations (Sizing + Payback)
 
-This repository contains the documentation for the formulas and mathematical logic used in the financial and technical simulation model for photovoltaic solar energy projects (Group A and Group B). The model is structured into two main sheets in Excel: **Dimensionamento** (Sizing) and **Payback**.
+Grid-tied photovoltaic system for micro/mini-generators (Groups A and B) under **Law 14.300/2022**, with technical sizing and financial feasibility analysis (NPV, IRR, simple and discounted payback).
 
----
+## Nomenclature
 
-## 🛠️ Sheet: Dimensionamento
-
-This sheet is responsible for the technical sizing of the system components (modules, inverters, strings) and the breakdown of initial capital expenditures (CAPEX).
-
-### 1. Cost Parameters and Tariffs
-The table below defines the consumption and injection costs based on the tariff components (TUSD and TE) and the Fio B impact:
-
-| Variable | Description / Formula |
-| :--- | :--- |
-| `consumo` | Monthly energy consumption:<br> $$EM$$ |
-| `custo_cons_B` | Consumption cost for Group B:<br> $$TUSD_B + TE_B$$ |
-| `custo_inj_B` | Injection cost for Group B (with Fio B discount):<br> $$TE_B + TUSD_B \cdot (1 - \text{fioB}\%_{TUSD})$$ |
-| `custo_cons_A` | Consumption cost for Group A:<br> $$TUSD_{A\_cheio} + TE_{A\_cheio}$$ |
-| `custo_inj_A` | Injection cost for Group A:<br> $$TE_{A\_scee} + TUSD_{A\_scee} \cdot (1 - \text{fioB}\%_{TUSD})$$ |
-
-### 2. Technical Sizing
-
-* **Generation Demand ($Dem_{ger}$):**
-  $$Dem_{ger} = \frac{Pinv_{CA}}{1000}$$
-
-* **Theoretical Photovoltaic Power ($Pfv_{teorica}$):**
-  $$Pfv_{teorica} = \frac{\text{consumo} \cdot 1000}{30 \cdot \eta_{sis} \cdot GHI}$$
-
-* **Number of Modules ($N_{mod}$):**
-  $$N_{mod} = \text{ARRED.P.CIMA}\left(\frac{Pfv_{teorica}}{P_{mod}}\right)$$
-
-* **Modules per MPPT ($N_{mod\_por\_mppt}$):**
-  $$N_{mod\_por\_mppt} = \text{ARRED}\left(\frac{N_{mod}}{N_{mppt}}\right)$$
-
-* **Real Photovoltaic Power ($Pfv_{real}$):**
-  $$Pfv_{real} = N_{mod} \cdot P_{mod}$$
-
-* **AC Inverter Power ($Pinv_{CA}$):**
-  $$Pinv_{CA} = \frac{Pfv_{real}}{FS_{inv}}$$
-
-* **Real Monthly Energy Generation ($Efv_{real}$):**
-  $$Efv_{real} = \frac{30 \cdot GHI \cdot \eta_{sis} \cdot Pfv_{real}}{1000}$$
-
-* **Maximum MPPT Voltage ($Vmax_{mppt}$):**
-  $$Vmax_{mppt} = Voc \cdot (1 + (T_{min} - 25) \cdot \alpha) \cdot N_{mod\_por\_mppt}$$
-
-* **Ideal Module Tilt (Nested `SE` Logic):**
-  $$inclinação = \begin{cases} 10, & \text{se } Lat < 10 \\ Lat, & \text{se } Lat \le 20 \\ Lat + 5, & \text{se } Lat \le 30 \\ Lat + 10, & \text{se } Lat \le 40 \\ Lat + 15, & \text{caso contrário} \end{cases}$$
-
-### 3. Investment Breakdown (CAPEX)
-
-* **Total Item Cost:** `custo_total_item = qtd · custo_unit`
-* **Distributed Price:** `preço_distribuído = SOMA(custos_item)`
-* **Material Value:** `SE(escolha=1; preço_distribuído; preço_concentrado)`
-* **Freight / Transportation (Estimated at 10%):** `transporte = 0,1 · valor_material`
-* **Total Investment:** `SOMA(valor_material; transporte; estudos; mão_obra)`
-* **Cost per Watt-peak ($custo\_Wp$):** $$custo\_Wp = \frac{\text{investimento}}{Pfv_{real}}$$
+| Symbol | Description | Unit |
+|---|---|---|
+| $E_M$ | Average monthly energy consumption | kWh/month |
+| $TUSD_B,\ TE_B$ | Consumption tariffs — Group B | R\$/kWh |
+| $TUSD_A,\ TE_A$ | Full tariffs (off-peak) — Group A | R\$/kWh |
+| $TUSD_A^{scee},\ TE_A^{scee}$ | SCEE tariffs — Group A | R\$/kWh |
+| $TUSD_g$ | Generation demand tariff (TUSDg) — Group A | R\$/kW |
+| $f_B$ | Fio B percentage over the TUSD | — |
+| $GHI$ | Global horizontal solar irradiation | kWh/m²·day |
+| $\eta_{sis}$ | Overall system efficiency | — |
+| $P_{mod}$ | Module power | W |
+| $FS$ | Inverter overload factor ($P_{CC}/P_{CA}$) | — |
+| $N_{mppt}$ | Number of inverter MPPTs | — |
+| $V_{oc},\ \alpha$ | Open-circuit voltage and module temperature coefficient | V; /°C |
+| $T_{min}$ | Minimum temperature | °C |
+| $\phi$ | Latitude | ° |
+| $a$ | Annual energy tariff increase | /year |
+| $t_{ac}$ | Self-consumption rate | — |
+| $i$ | Discount rate | /year |
+| $V_{inv}$ | Inverter service life | years |
+| $m,\ c_{inv}$ | Maintenance and inverter-replacement cost (% of savings) | — |
+| $p_1,\ p_n$ | Efficiency loss in 1st year / following years | — |
+| $c$ | ANEEL scenario: pessimistic (1), base (2), optimistic (3) | — |
+| $I_0$ | Initial investment | R\$ |
 
 ---
 
-## 📈 Sheet: Payback
+## 1. Sizing
 
-This sheet projects the cash flow over the years ($n$), taking into account module degradation, tariff adjustments, maintenance costs, and inverter replacements.
+**Unit energy costs**
 
-### 1. Auxiliary Tariff Variables
-* **Effective TE:** `TE_ef = SE(grupo='A'; TE_A_cheio; TE_B)`
-* **Effective TUSD:** `TUSD_ef = SE(grupo='A'; TUSD_A_cheio; TUSD_B)`
+$$C_{cons}^{B} = TUSD_B + TE_B$$
 
-### 2. Annual Projections (Year $n$)
+$$C_{inj}^{B} = TE_B + TUSD_B\,(1 - f_B)$$
 
-* **Energy Generation ($Energia_{(n)}$):**
-  * **Year 1:** $Efv_{real} \cdot 12$
-  * **Year 2:** $Efv_{real} \cdot 12 \cdot (1 - perda_1)$
-  * **Year $n \ge 3$:** $Efv_{real} \cdot 12 \cdot (1 - perda_1 - (n - 2) \cdot perda_n)$
+$$C_{cons}^{A} = TUSD_A + TE_A$$
 
-* **Consumption Cost Evolution ($custo\_cons_{(n)}$):**
-  * **Year 1:** $TE_{ef} + TUSD_{ef}$
-  * **Year $n > 1$:** $custo\_cons_{(n-1)} \cdot (1 + aum)$
+$$C_{inj}^{A} = TE_A^{scee} + TUSD_A^{scee}\,(1 - f_B)$$
 
-* **Injection Cost Evolution ($custo\_inj_{(n)}$):**
-  * **Year 1:** Depends on the selected regulatory scenario:
-    * *Scenario 1:* $TE_{scee}$
-    * *Scenario 2:* $TE_{scee} + TUSD_{scee} \cdot (1 - fioB\%_{TUSD})$
-    * *Scenario 3:* $TE_{scee} + TUSD_{scee}$
-  * **Year $n > 1$:** $custo\_inj_{(n-1)} \cdot (1 + aum)$
+**Array sizing**
 
-* **Annual Savings Generated ($Economia_{(n)}$):**
-  $$Economia_{(n)} = (custo\_cons \cdot autoc + (1 - autoc) \cdot custo\_inj) \cdot Energia$$
+$$P_{FV}^{teo} = \frac{E_M \cdot 1000}{30 \cdot \eta_{sis} \cdot GHI}$$
 
-* **Maintenance and O&M Costs ($Manutenção_{(n)}$):**
-  Includes inverter replacement forecasting during its lifespan years (`vida_inv`):
-  $$Manutenção_{(n)} = \begin{cases} Economia \cdot (m\% + inv\%), & \text{se } n = \text{vida\_inv} \text{ ou } n = 2 \cdot \text{vida\_inv} \\ Economia \cdot m\%, & \text{caso contrário} \end{cases}$$
+$$N_{mod} = \left\lceil \frac{P_{FV}^{teo}}{P_{mod}} \right\rceil
+\qquad
+N_{mod/mppt} = \text{round}\!\left(\frac{N_{mod}}{N_{mppt}}\right)$$
 
-### 3. Financial Indicators and Cash Flow
+$$P_{FV} = N_{mod} \cdot P_{mod}
+\qquad
+P_{inv}^{CA} = \frac{P_{FV}}{FS}$$
 
-* **Net Cash Flow ($Fluxo_{(n)}$):**
-  * **Year 0:** $-\text{investimento}$
-  * **Year $n \ge 1$:** $$Fluxo_{(n)} = Economia - Manutenção - \text{SE}(grupo='A'; Dem_{ger} \cdot TUSDg \cdot 12; 0)$$
+$$E_{FV} = \frac{30 \cdot GHI \cdot \eta_{sis} \cdot P_{FV}}{1000}
+\qquad
+D_{ger} = \frac{P_{inv}^{CA}}{1000}$$
 
-* **Accumulated Cash Flow:** `Acumulado(n) = Acumulado(n-1) + Fluxo`
-* **Discounted Cash Flow ($Fluxo\_desc_{(n)}$):**
-  $$Fluxo\_desc_{(n)} = \frac{Fluxo}{(1 + i_{desc})^n}$$
-* **Accumulated Discounted Cash Flow:** `Fluxo_desc_acum(n) = Fluxo_desc_acum(n-1) + Fluxo_desc`
+**Voltage check and tilt**
 
-#### Final Viability Metrics
-> 📊 **VPL (Net Present Value - NPV):** `=SOMA(Fluxo_desc)`
-> 
-> 📈 **TIR (Internal Rate of Return - IRR):** `=TIR(Fluxos)`
+$$V_{mppt}^{max} = V_{oc}\,\bigl(1 + (T_{min} - 25)\,\alpha\bigr)\,N_{mod/mppt}$$
+
+$$\beta =
+\begin{cases}
+10 & \phi < 10 \\
+\phi & 10 \le \phi \le 20 \\
+\phi + 5 & 20 < \phi \le 30 \\
+\phi + 10 & 30 < \phi \le 40 \\
+\phi + 15 & \phi > 40
+\end{cases}$$
+
+**Costs and investment**
+
+$$\text{cost}_{item} = q_{item}\cdot c_{item}
+\qquad
+\text{Distributed price} = \sum_i \text{cost}_{item,i}$$
+
+$$\text{Material} = \text{IF}(\text{option}=1;\ \text{Distributed price};\ \text{Bundled price})$$
+
+$$\text{Transport} = 0{.}10\cdot\text{Material}$$
+
+$$I_0 = \text{Material} + \text{Transport} + \text{Studies} + \text{Labor}$$
+
+$$\text{Cost}_{Wp} = \frac{I_0}{P_{FV}}$$
 
 ---
-*This file serves as engineering documentation to validate the business rules implemented within this repository's spreadsheets.*
+
+## 2. Financial Feasibility (Payback)
+
+Evaluated over $n = 0,1,\dots,30$ years. Injection base tariffs: Group A uses $TE_A^{scee},\ TUSD_A^{scee}$; Group B uses $TE_B,\ TUSD_B$.
+
+**Annual energy generated** (module degradation)
+
+$$E_g(n) =
+\begin{cases}
+12\,E_{FV} & n = 1 \\
+12\,E_{FV}\,(1 - p_1) & n = 2 \\
+12\,E_{FV}\,\bigl(1 - p_1 - (n-2)\,p_n\bigr) & n \ge 3
+\end{cases}$$
+
+**Adjusted unit costs**
+
+$$C_{cons}(n) =
+\begin{cases}
+TE_{ef} + TUSD_{ef} & n = 1 \\
+C_{cons}(n-1)\,(1 + a) & n > 1
+\end{cases}$$
+
+$$C_{inj}(1) =
+\begin{cases}
+TE_{base} & c = 1 \\
+TE_{base} + TUSD_{base}\,(1 - f_B) & c = 2 \\
+TE_{base} + TUSD_{base} & c = 3
+\end{cases}
+\qquad
+C_{inj}(n>1) = C_{inj}(n-1)\,(1+a)$$
+
+**Savings, maintenance and cash flow**
+
+$$S(n) = \bigl(C_{cons}(n)\,t_{ac} + (1 - t_{ac})\,C_{inj}(n)\bigr)\,E_g(n)$$
+
+$$M(n) =
+\begin{cases}
+S(n)\,(m + c_{inv}) & n = V_{inv}\ \text{or}\ n = 2\,V_{inv} \\
+S(n)\,m & \text{otherwise}
+\end{cases}$$
+
+$$FC(n) =
+\begin{cases}
+-\,I_0 & n = 0 \\
+S(n) - M(n) - \text{IF}\bigl(\text{Group A};\ 12\,D_{ger}\,TUSD_g;\ 0\bigr) & n \ge 1
+\end{cases}$$
+
+**Cumulative values and metrics**
+
+$$FC_{ac}(n) = FC_{ac}(n-1) + FC(n)
+\qquad
+FD(n) = \frac{FC(n)}{(1 + i)^{\,n}}
+\qquad
+FD_{ac}(n) = FD_{ac}(n-1) + FD(n)$$
+
+$$\boxed{\ \text{NPV} = \sum_{n=0}^{30} FD(n)\ }
+\qquad
+\boxed{\ \text{IRR}:\ \sum_{n=0}^{30} \frac{FC(n)}{(1 + \text{IRR})^{\,n}} = 0\ }$$
+
+The simple and discounted **paybacks** are the year in which $FC_{ac}(n)$ and $FD_{ac}(n)$ cross zero, respectively.
