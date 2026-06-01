@@ -13,8 +13,9 @@ The table below defines the consumption and injection costs based on the tariff 
 
 | Variable | Description / Formula |
 | :--- | :--- |
+| `consumo` | Monthly energy consumption:<br> $$EM$$ |
 | `custo_cons_B` | Consumption cost for Group B:<br> $$TUSD_B + TE_B$$ |
-| `custo_inj_B` | Injection cost for Group B (with Fio B discount):<br> $$TUSD_B + TE_B \cdot (1 - \text{fioB}\%_{TUSD})$$ |
+| `custo_inj_B` | Injection cost for Group B (with Fio B discount):<br> $$TE_B + TUSD_B \cdot (1 - \text{fioB}\%_{TUSD})$$ |
 | `custo_cons_A` | Consumption cost for Group A:<br> $$TUSD_{A\_cheio} + TE_{A\_cheio}$$ |
 | `custo_inj_A` | Injection cost for Group A:<br> $$TE_{A\_scee} + TUSD_{A\_scee} \cdot (1 - \text{fioB}\%_{TUSD})$$ |
 
@@ -54,8 +55,7 @@ The table below defines the consumption and injection costs based on the tariff 
 * **Material Value:** `SE(escolha=1; preço_distribuído; preço_concentrado)`
 * **Freight / Transportation (Estimated at 10%):** `transporte = 0,1 · valor_material`
 * **Total Investment:** `SOMA(valor_material; transporte; estudos; mão_obra)`
-* **Cost per Watt-peak ($custo\_Wp$):** 
-  $$custo\_Wp = \frac{\text{investimento}}{Pfv_{real}}$$
+* **Cost per Watt-peak ($custo\_Wp$):** $$custo\_Wp = \frac{\text{investimento}}{Pfv_{real}}$$
 
 ---
 
@@ -96,8 +96,7 @@ This sheet projects the cash flow over the years ($n$), taking into account modu
 
 * **Net Cash Flow ($Fluxo_{(n)}$):**
   * **Year 0:** $-\text{investimento}$
-  * **Year $n \ge 1$:** 
-    $$Fluxo_{(n)} = Economia - Manutenção - \text{SE}(grupo='A'; Dem_{ger} \cdot TUSDg \cdot 12; 0)$$
+  * **Year $n \ge 1$:** $$Fluxo_{(n)} = Economia - Manutenção - \text{SE}(grupo='A'; Dem_{ger} \cdot TUSDg \cdot 12; 0)$$
 
 * **Accumulated Cash Flow:** `Acumulado(n) = Acumulado(n-1) + Fluxo`
 * **Discounted Cash Flow ($Fluxo\_desc_{(n)}$):**
