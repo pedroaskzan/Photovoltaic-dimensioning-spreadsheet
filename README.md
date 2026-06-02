@@ -12,7 +12,7 @@ it to cover Brazilian **Group A** customers as well, not only Group B.
 Based on the *Curso Solar* by Prof. Dr. Elmer Pablo Tito Cari (EESC–USP), I used my
 Excel skills and my knowledge of Brazil's tariffs and charges to expand the original
 spreadsheet, taking it from Group B only to Group A as well, applying the correct
-taxes for a more detailed and accurate analysis.
+taxes for a more detailed and accurate analysis. Drawing on Dr. Cari's experience, I adopted his suggested values for key input parameters, such as the annual energy-price escalation rate, among others.
 
 First I dimension the photovoltaic system, then calculate its cost, and use economic
 factors to adjust the payback curve over the years. It could be expanded — as the
